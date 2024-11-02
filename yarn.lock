@@ -7035,6 +7035,18 @@ react-native-helmet-async@2.0.4:
     react-fast-compare "^3.2.2"
     shallowequal "^1.1.0"
 
+react-native-is-edge-to-edge@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/react-native-is-edge-to-edge/-/react-native-is-edge-to-edge-1.1.6.tgz#69ec13f70d76e9245e275eed4140d0873a78f902"
+  integrity sha512-1pHnFTlBahins6UAajXUqeCOHew9l9C2C8tErnpGC3IyLJzvxD+TpYAixnCbrVS52f7+NvMttbiSI290XfwN0w==
+
+react-native-keyboard-controller@^1.14.3:
+  version "1.14.3"
+  resolved "https://registry.yarnpkg.com/react-native-keyboard-controller/-/react-native-keyboard-controller-1.14.3.tgz#283560a6dd1d4ca55ffbc26150cc74c3327338fd"
+  integrity sha512-E9yYD6Q6w+lCS0OFNXnWszoMlhcavdYJFMeYgmI5ydch3x8GtnQiNQwGhIATS2hxFbB1KY/TerVRxZBT+Zu5mQ==
+  dependencies:
+    react-native-is-edge-to-edge "^1.1.6"
+
 react-native-reanimated@~3.10.1:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-3.10.1.tgz#3c37d1100bbba0065df39c96aab0c1ff1b50c0fa"
