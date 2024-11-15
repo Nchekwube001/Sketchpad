@@ -4,6 +4,11 @@ export default function Index() {
   // const [onboarded] = useState(true);
   // const {loggedIn} = useAppSelector(state => state.isLoggedIn);
   // return <Redirect href={'/onboarding'} />;
-  return <Redirect href={"/liveanimation"} />;
+  return (
+    <Redirect
+      // href={"/liveanimation"}
+      href={"/animatedcreate"}
+    />
+  );
 }
 // ✗ eas build -p android --profile preview2
