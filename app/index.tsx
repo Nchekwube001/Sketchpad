@@ -7,7 +7,7 @@ export default function Index() {
   return (
     <Redirect
       // href={"/liveanimation"}
-      href={"/animatedcreate"}
+      href={"/perplexitylist"}
     />
   );
 }

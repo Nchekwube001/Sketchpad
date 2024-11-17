@@ -1214,6 +1214,11 @@
     find-up "^5.0.0"
     js-yaml "^4.1.0"
 
+"@faker-js/faker@^9.2.0":
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-9.2.0.tgz#269ee3a5d2442e88e10d984e106028422bcb9551"
+  integrity sha512-ulqQu4KMr1/sTFIYvqSdegHT8NIkt66tFAkugGnHA+1WAfEn6hMzNR+svjXGFRVLnapxvej67Z/LwchFrnLBUg==
+
 "@graphql-typed-document-node/core@^3.1.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.2.0.tgz#5f3d96ec6b2354ad6d8a28bf216a1d97b5426861"
@@ -1778,6 +1783,11 @@
     graceful-fs "^4.1.3"
     prompts "^2.4.2"
     semver "^7.5.2"
+
+"@react-native-segmented-control/segmented-control@^2.5.6":
+  version "2.5.6"
+  resolved "https://registry.yarnpkg.com/@react-native-segmented-control/segmented-control/-/segmented-control-2.5.6.tgz#5548d328b7a3459948d443e267e3ac85fc7b3c27"
+  integrity sha512-3Dtp0LodmmhkLvTRbnsaEBHe3AlJFUJ5K2GEnaZL9YqoeQYlGfGCbI1SOIUsZDnHBZqAlF7sBK6zm+JfNvMN8g==
 
 "@react-native/assets-registry@0.74.87":
   version "0.74.87"

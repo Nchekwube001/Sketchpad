@@ -58,7 +58,7 @@ const AnimatedCreate = () => {
               <Animated.View
                 key={`${showItems}-items`}
                 entering={FadeInDown.delay(300)}
-                exiting={FadeOutLeft}
+                exiting={FadeOut}
               >
                 <Pressable
                   onPress={() => {
