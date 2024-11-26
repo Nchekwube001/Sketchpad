@@ -80,7 +80,7 @@ const LineChart = () => {
                     text={value}
                     x={chartBounds.left + 40}
                     y={40}
-                    font={font}
+                    font={chartFont}
                     color={labelColor}
                     style={"fill"}
                   />
