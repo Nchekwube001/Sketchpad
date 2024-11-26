@@ -8,7 +8,7 @@ export default function Index() {
   return (
     <Redirect
       // href={"/liveanimation"}
-      href={"/arcslider"}
+      href={"/linechart"}
       // href={"/Messagehome"}
       // href={"/trigonometry"}
     />
