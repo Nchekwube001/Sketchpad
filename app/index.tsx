@@ -1,5 +1,6 @@
 import React from "react";
 import { Redirect } from "expo-router";
+import "../constants/theme/unistyles";
 export default function Index() {
   // const [onboarded] = useState(true);
   // const {loggedIn} = useAppSelector(state => state.isLoggedIn);
@@ -7,7 +8,9 @@ export default function Index() {
   return (
     <Redirect
       // href={"/liveanimation"}
-      href={"/leaderboard"}
+      href={"/arcslider"}
+      // href={"/Messagehome"}
+      // href={"/trigonometry"}
     />
   );
 }
