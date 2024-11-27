@@ -1,21 +1,57 @@
 import { View, Text, StyleSheet, Dimensions } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import Animated, { SharedValue, useSharedValue } from "react-native-reanimated";
+import Animated, {
+  Easing,
+  interpolate,
+  SharedValue,
+  useDerivedValue,
+  useSharedValue,
+  withRepeat,
+  withTiming,
+} from "react-native-reanimated";
+import { Canvas, Circle } from "@shopify/react-native-skia";
 
 const length = 2 * Math.PI;
 const { width, height } = Dimensions.get("window");
 
-const radius = width / 2;
+const cx = width / 2;
+const cy = height / 2;
+const radius = 100;
+const _strokeWidth = 4;
 const trigonometry = () => {
   const progress = useSharedValue(0);
   const { styles } = useStyles(trigStyle);
+  const animationVal = useSharedValue(0);
+  useEffect(() => {
+    animationVal.value = withRepeat(
+      withTiming(1, {
+        duration: 2000,
+        easing: Easing.linear,
+      }),
+      -1
+    );
+  }, []);
+  const angle = useDerivedValue(() => {
+    const value = interpolate(animationVal.value, [0, 1], [0, Math.PI * 2]);
+
+    return value;
+  });
+  const dx = useDerivedValue(() => cx + radius * Math.cos(angle.value));
+  const dy = useDerivedValue(() => cy + radius * Math.sin(angle.value));
   return (
-    <View style={[styles.container]}>
-      <View style={[styles.circle]}>
-        <Driver progress={progress} radius={radius} />
-      </View>
-    </View>
+    <Canvas style={{ flex: 1 }}>
+      <Circle
+        cx={cx}
+        cy={cy}
+        r={radius}
+        style={"stroke"}
+        strokeWidth={_strokeWidth}
+        color={"white"}
+      />
+      <Circle cx={dx} cy={dy} r={8} color={"red"} />
+      {/* <Driver progress={animationVal} radius={radius} /> */}
+    </Canvas>
   );
 };
 

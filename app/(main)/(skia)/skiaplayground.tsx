@@ -37,8 +37,10 @@ const Skiaplayground = () => {
 
   // Animated value for the angle (in radians)
   const theta = useSharedValue(0);
-  const circleCx = useSharedValue(_strokeWidth);
-  const circleCy = useSharedValue(_viewWidth / 2);
+  const circleCx = useSharedValue(_drawWidth / 2 + _strokeWidth);
+  const circleCy = useSharedValue(_drawWidth / 2 + _ballRadius);
+  // const circleCx = useSharedValue(_strokeWidth);
+  // const circleCy = useSharedValue(_viewWidth / 2);
   const getRandon = () => {
     "worklet";
     const val = Math.random();
@@ -127,7 +129,7 @@ const Skiaplayground = () => {
           //   cx={cx + r * Math.cos(theta.current)} // Update x using parametric equation
           //   cy={cy + r * Math.sin(theta.current)} // Update y using parametric equation
           r={_ballRadius}
-          color="white"
+          color="red"
         />
       </Canvas>
 

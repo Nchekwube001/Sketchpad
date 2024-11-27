@@ -7,7 +7,13 @@ import {
   Text as SkText,
 } from "@shopify/react-native-skia";
 import globalStyle from "@/globalStyle/globalStyle";
-import { Area, CartesianChart, Line, useChartPressState } from "victory-native";
+import {
+  Area,
+  Bar,
+  CartesianChart,
+  Line,
+  useChartPressState,
+} from "victory-native";
 import { SharedValue, useDerivedValue } from "react-native-reanimated";
 const spaceMono = require("../../../assets/fonts/SpaceMono-Regular.ttf");
 export const DATA = Array.from({ length: 31 }, (_, i) => ({
@@ -78,15 +84,20 @@ const LineChart = () => {
                 {isActive && (
                   <SkText
                     text={value}
-                    x={chartBounds.left + 40}
+                    x={chartBounds?.left + 40}
                     y={40}
                     font={chartFont}
                     color={labelColor}
                     style={"fill"}
                   />
                 )}
-                <Line
+                <Bar
                   points={points.highTmp}
+                  chartBounds={chartBounds}
+                  roundedCorners={{
+                    topLeft: 6,
+                    topRight: 6,
+                  }}
                   color={"lightgreen"}
                   animate={{
                     type: "timing",
@@ -102,16 +113,16 @@ const LineChart = () => {
                     duration: 500,
                   }}
                   y0={chartBounds.bottom}
-                >
-                  <LinearGradient
-                    start={{ x: chartBounds.bottom, y: 200 }}
-                    end={{
-                      x: chartBounds.bottom,
-                      y: chartBounds.bottom,
-                    }}
-                    colors={["green", "#90ee9050"]}
-                  />
-                </Area> */}
+                > */}
+                <LinearGradient
+                  start={{ x: chartBounds.bottom, y: 200 }}
+                  end={{
+                    x: chartBounds.bottom,
+                    y: chartBounds.bottom,
+                  }}
+                  colors={["green", "#90ee9050"]}
+                />
+                {/* </Area> */}
                 {isActive && (
                   <Tooltip x={state.x.position} y={state.y.highTmp.position} />
                 )}
