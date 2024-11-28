@@ -10,7 +10,10 @@ import {
 import { Button, Dimensions, LayoutChangeEvent } from "react-native";
 import { View } from "react-native";
 import Animated, {
+  Easing,
+  interpolate,
   useAnimatedProps,
+  useDerivedValue,
   useSharedValue,
   withRepeat,
   withTiming,
@@ -37,17 +40,42 @@ const Skiaplayground = () => {
 
   // Animated value for the angle (in radians)
   const theta = useSharedValue(0);
-  const circleCx = useSharedValue(_drawWidth / 2 + _strokeWidth);
-  const circleCy = useSharedValue(_drawWidth / 2 + _ballRadius);
-  // const circleCx = useSharedValue(_strokeWidth);
-  // const circleCy = useSharedValue(_viewWidth / 2);
+
+  // useEffect(() => {
+  //   theta.value = withRepeat(
+  //     withTiming(1, {
+  //       duration: 2000,
+  //       easing: Easing.linear,
+  //     }),
+  //     -1,
+  //     true
+  //   );
+  // }, []);
+  const angle = useDerivedValue(() => {
+    const value = interpolate(theta.value, [0, 1], [Math.PI, Math.PI * 2]);
+    return value;
+  });
+  const circleRadius = +_drawWidth / 2;
+  const circleCx = useDerivedValue(
+    () => _strokeWidth + circleRadius + circleRadius * Math.cos(angle.value)
+  );
+  const circleCy = useDerivedValue(
+    () =>
+      _ballRadius +
+      _ballRadius / 4 +
+      circleRadius +
+      circleRadius * Math.sin(angle.value)
+  );
+
   const getRandon = () => {
     "worklet";
     const val = Math.random();
+    theta.value = withTiming(val, { duration: 1000 });
     return val;
   };
   useEffect(() => {
-    p.value = withTiming(getRandon(), { duration: 1000 });
+    const randomVal = getRandon();
+    p.value = withTiming(randomVal, { duration: 1000 });
   }, [r]);
 
   const animatedProp = useAnimatedProps(() => ({
@@ -130,7 +158,15 @@ const Skiaplayground = () => {
           //   cy={cy + r * Math.sin(theta.current)} // Update y using parametric equation
           r={_ballRadius}
           color="red"
-        />
+        >
+          <SweepGradient
+            c={{
+              x: circleCx.value,
+              y: circleCy.value,
+            }}
+            colors={[purple, blue]}
+          />
+        </Circle>
       </Canvas>
 
       <Button onPress={randomise} title="Randomise" />

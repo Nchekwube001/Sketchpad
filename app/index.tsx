@@ -8,9 +8,9 @@ export default function Index() {
   return (
     <Redirect
       // href={"/liveanimation"}
-      href={"/trigonometryline"}
+      // href={"/trigonometryline"}
       // href={"/Messagehome"}
-      // href={"/trigonometry"}
+      href={"/skiaplayground"}
     />
   );
 }
