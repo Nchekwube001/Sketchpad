@@ -48,22 +48,22 @@ const trigonometry = () => {
     );
   }, []);
   useEffect(() => {
-    const interval = setInterval(() => {
-      lineVal.value = withTiming(lineVal.value + 1, {
-        duration: 2000,
-        easing: Easing.linear,
-      });
-    }, 2000);
-
-    return () => clearInterval(interval);
-    // lineVal.value = withRepeat(
-    //   withTiming(1, {
+    // const interval = setInterval(() => {
+    //   lineVal.value = withTiming(lineVal.value + 1, {
     //     duration: 2000,
     //     easing: Easing.linear,
-    //   }),
-    //   -1,
-    //   true
-    // );
+    //   });
+    // }, 2000);
+
+    // return () => clearInterval(interval);
+    lineVal.value = withRepeat(
+      withTiming(lineVal.value + 1, {
+        duration: 2000,
+        easing: Easing.linear,
+      }),
+      -1,
+      false
+    );
   }, []);
   const angle = useDerivedValue(() => {
     const value = interpolate(animationVal.value, [0, 1], [0, Math.PI * 2]);
