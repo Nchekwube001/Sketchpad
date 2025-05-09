@@ -9,7 +9,7 @@ export default function Index() {
     <Redirect
       // href={"/liveanimation"}
       // href={"/trigonometryline"}
-      href={"/lineartab"}
+      href={"/splittingaccordion"}
       // href={"/metaball"}
     />
   );
