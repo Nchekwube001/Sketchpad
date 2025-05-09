@@ -3,10 +3,6 @@ import { useState } from "react";
 import { Text, TextProps, TextStyle, View } from "react-native";
 
 const numbersToNine = [...Array(10).keys()]; // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-console.log({
-  numbersToNine,
-});
-
 type TickerListProps = {
   number: number;
   fontSize: number;
@@ -95,9 +91,6 @@ export default function Ticker({
 }: TickerProps) {
   const splitValue = String(value).split("");
   const [newFontSize, setNewFontSize] = useState(fontSize);
-  console.log({
-    newFontSize,
-  });
 
   return (
     <View>

@@ -9,8 +9,8 @@ export default function Index() {
     <Redirect
       // href={"/liveanimation"}
       // href={"/trigonometryline"}
-      // href={"/Messagehome"}
-      href={"/metaball"}
+      href={"/lineartab"}
+      // href={"/metaball"}
     />
   );
 }

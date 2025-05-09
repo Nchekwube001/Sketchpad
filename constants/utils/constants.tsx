@@ -21,3 +21,19 @@ export const randomisedIDs = () => {
   }
   return id;
 };
+
+export const BALL_COLOR = "#fff";
+export const TOTAL_BRICKS = 18;
+export const PADDLE_HEIGHT = 40;
+export const PADDLE_WIDTH = 125;
+export const BRICK_HEIGHT = 25;
+export const BRICK_WIDTH = 80;
+export const BRICK_ROW_LENGTH = 3;
+export const BRICK_MIDDLE = width / 2 - BRICK_WIDTH / 2;
+export const PADDLE_MIDDLE = width / 2 - PADDLE_WIDTH / 2;
+export const RADIUS = 16;
+// export const MAX_SPEED = 50;
+export const MAX_SPEED = 10;
+
+export const OVAL_WIDTH = 256;
+export const OVAL_HIGHT = 128;

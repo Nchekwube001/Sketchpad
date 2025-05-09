@@ -12,6 +12,7 @@ import "../global.css";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import globalStyle from "@/globalStyle/globalStyle";
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
@@ -33,7 +34,7 @@ export default function RootLayout() {
 
   return (
     <KeyboardProvider>
-      <GestureHandlerRootView>
+      <GestureHandlerRootView style={[globalStyle.flexOne]}>
         <ThemeProvider
           value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
         >
