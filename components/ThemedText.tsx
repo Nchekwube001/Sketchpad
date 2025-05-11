@@ -1,31 +1,46 @@
-import { Text, type TextProps, StyleSheet } from 'react-native';
+import { Text, type TextProps, StyleSheet, useColorScheme } from "react-native";
 
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { useThemeColor } from "@/hooks/useThemeColor";
+import { useScaleFont } from "@/hooks/useFontScale";
 
 export type ThemedTextProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
-  type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link';
+  invert?: boolean;
+  light?: boolean;
+  type?: "default" | "title" | "subtitle" | "link";
 };
 
 export function ThemedText({
   style,
   lightColor,
   darkColor,
-  type = 'default',
+  invert,
+  light,
+  type = "default",
   ...rest
 }: ThemedTextProps) {
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
+  const color = light
+    ? "#fff"
+    : useThemeColor(
+        { light: lightColor, dark: darkColor },
+        invert ? "background" : "text"
+      );
+  const scale = useScaleFont();
+  const isLight = useColorScheme() === "light";
 
   return (
     <Text
       style={[
         { color },
-        type === 'default' ? styles.default : undefined,
-        type === 'title' ? styles.title : undefined,
-        type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
-        type === 'subtitle' ? styles.subtitle : undefined,
-        type === 'link' ? styles.link : undefined,
+        type === "default"
+          ? [styles.default(isLight), { fontSize: scale(20) }]
+          : undefined,
+        type === "title" ? styles.title() : undefined,
+        type === "subtitle"
+          ? [styles.subtitle(isLight), { fontSize: scale(14.5) }]
+          : undefined,
+        type === "link" ? styles.link() : undefined,
         style,
       ]}
       {...rest}
@@ -33,28 +48,26 @@ export function ThemedText({
   );
 }
 
-const styles = StyleSheet.create({
-  default: {
-    fontSize: 16,
-    lineHeight: 24,
-  },
-  defaultSemiBold: {
-    fontSize: 16,
-    lineHeight: 24,
-    fontWeight: '600',
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    lineHeight: 32,
-  },
-  subtitle: {
+const styles = {
+  default: (light: boolean) => ({
+    fontFamily: light ? "GeistSemiBold" : "GeistMedium",
     fontSize: 20,
-    fontWeight: 'bold',
-  },
-  link: {
+    lineHeight: 24,
+  }),
+  title: () => ({
+    fontFamily: "GeistSemiBold",
+    fontSize: 32,
+    lineHeight: 32,
+  }),
+  subtitle: (light: boolean) => ({
+    fontFamily: light ? "GeistMedium" : "GeistRegular",
+    fontSize: 14.5,
+    lineHeight: 24,
+  }),
+  link: () => ({
+    fontFamily: "GeistRegular",
     lineHeight: 30,
     fontSize: 16,
-    color: '#0a7ea4',
-  },
-});
+    color: "#0a7ea4",
+  }),
+};

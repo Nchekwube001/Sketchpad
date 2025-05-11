@@ -1,7 +1,7 @@
 import {
   DarkTheme,
   DefaultTheme,
-  ThemeProvider,
+  // ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
@@ -13,6 +13,7 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import globalStyle from "@/globalStyle/globalStyle";
+import { ThemeProvider } from "./contexts/ThemeContext";
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
@@ -36,7 +37,7 @@ export default function RootLayout() {
     <KeyboardProvider>
       <GestureHandlerRootView style={[globalStyle.flexOne]}>
         <ThemeProvider
-          value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+        // value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
         >
           <Stack initialRouteName="(main)">
             <Stack.Screen name="(main)" options={{ headerShown: false }} />

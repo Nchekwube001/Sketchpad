@@ -33,14 +33,14 @@
       [
         "expo-custom-assets",
         {
-          "assetsPaths": ["./src/assets/resources/"]
+          "assetsPaths": ["./assets/resources/"]
         }
       ],
       [
         "expo-build-properties",
         {
           "ios": {
-            "deploymentTarget": "14.0"
+            "deploymentTarget": "15.0"
           }
         }
       ]
