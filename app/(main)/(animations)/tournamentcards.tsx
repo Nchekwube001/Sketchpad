@@ -154,7 +154,7 @@ const MatchBox = ({ match }: { match: MatchInfo }) => {
           </Text>
           {match.matchData.player1 === winner && (
             <Text style={{ color: theme.colors.primary }}>
-              {isLastRound ? "🏆" : "⛳️"}
+              {isLastRound ? "🏆" : "⚽️"}
             </Text>
           )}
         </View>
@@ -164,7 +164,7 @@ const MatchBox = ({ match }: { match: MatchInfo }) => {
           </Text>
           {match.matchData.player2 === winner && (
             <Text style={{ color: theme.colors.primary }}>
-              {isLastRound ? "🏆" : "⛳️"}
+              {isLastRound ? "🏆" : "⚽️"}
             </Text>
           )}
         </View>
@@ -178,6 +178,7 @@ const Brackets = ({ match, roundIndex, scrollX, matchIndex }: BracketProps) => {
     const marginVertical = customMargin(roundIndex, scrollX);
     return {
       marginVertical: marginVertical,
+      //   marginVertical: 0,
     };
   });
 
@@ -309,6 +310,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     height: 1750,
     paddingTop: 10,
+    // backgroundColor: "#000",
   },
   bracketContainer: {
     flexDirection: "row",

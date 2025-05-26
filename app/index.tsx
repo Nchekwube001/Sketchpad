@@ -8,10 +8,14 @@ export default function Index() {
   return (
     <Redirect
       // href={"/liveanimation"}
-      // href={"/trigonometryline"}
+      href={"/trigonometry"}
       // href={"/blogui"}
       // href={"/masonrygrid"}
-      href={"/tournamentcards"}
+      // href={"/signature"}
+      // href={"/swipetotalk"}
+      // href={"/emojipicker"}
+      // href={"/lavalamp"}
+      // href={"/vinyl"}
       // href={"/arrows"}
       // href={"/basicmask"}
       // href={"/metaball"}

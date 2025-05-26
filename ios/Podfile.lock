@@ -9,6 +9,8 @@ PODS:
     - ExpoModulesCore
   - ExpoBlur (13.0.3):
     - ExpoModulesCore
+  - ExpoDragDropContentView (0.8.5):
+    - ExpoModulesCore
   - ExpoFileSystem (17.0.1):
     - ExpoModulesCore
   - ExpoFont (12.0.10):
@@ -1438,6 +1440,7 @@ DEPENDENCIES:
   - Expo (from `../node_modules/expo`)
   - ExpoAsset (from `../node_modules/expo-asset/ios`)
   - ExpoBlur (from `../node_modules/expo-blur/ios`)
+  - ExpoDragDropContentView (from `../node_modules/expo-drag-drop-content-view/ios`)
   - ExpoFileSystem (from `../node_modules/expo-file-system/ios`)
   - ExpoFont (from `../node_modules/expo-font/ios`)
   - ExpoHead (from `../node_modules/expo-router/ios`)
@@ -1540,6 +1543,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-asset/ios"
   ExpoBlur:
     :path: "../node_modules/expo-blur/ios"
+  ExpoDragDropContentView:
+    :path: "../node_modules/expo-drag-drop-content-view/ios"
   ExpoFileSystem:
     :path: "../node_modules/expo-file-system/ios"
   ExpoFont:
@@ -1697,6 +1702,7 @@ SPEC CHECKSUMS:
   Expo: 723b25eaad8c356d626c579e3d78d5b969e1d3ea
   ExpoAsset: 286fee7ba711ce66bf20b315e68106b13b8629fc
   ExpoBlur: 99901a4531f5d3ac4a19b362907b8f75da4ed9c8
+  ExpoDragDropContentView: 4145dbf3871ad94a64f33b93be580077332dfe95
   ExpoFileSystem: 2988caaf68b7cb706e36d382829d99811d9d76a5
   ExpoFont: 38dddf823e32740c2a9f37c926a33aeca736b5c4
   ExpoHead: 37970100b038694465cc39044cf23f3d1f56fade

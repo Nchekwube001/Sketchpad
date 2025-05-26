@@ -1,5 +1,5 @@
 export const tournamentData = {
-  tournamentName: "Golf Masters 2025",
+  tournamentName: "UEFA Chanpions League 2025",
   rounds: [
     {
       round: 1,

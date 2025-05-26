@@ -17,7 +17,7 @@ const { width, height } = Dimensions.get("window");
 
 const cx = width / 2;
 const cy = height / 2;
-const radius = 100;
+const radius = 120;
 const _strokeWidth = 4;
 const trigonometry = () => {
   const progress = useSharedValue(0);
