@@ -8,7 +8,12 @@ export default function Index() {
   return (
     <Redirect
       // href={"/liveanimation"}
-      href={"/trigonometry"}
+      // href={"/foltransactions"}
+      // href={"/playground"}
+      // href={"/curvedscroll"}
+      href={"/animatedoverlay"}
+      // href={"/resizinginput"}
+      // href={"/refreshcontrol"}
       // href={"/blogui"}
       // href={"/masonrygrid"}
       // href={"/signature"}

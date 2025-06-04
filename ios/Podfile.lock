@@ -15,6 +15,8 @@ PODS:
     - ExpoModulesCore
   - ExpoFont (12.0.10):
     - ExpoModulesCore
+  - ExpoHaptics (13.0.1):
+    - ExpoModulesCore
   - ExpoHead (3.5.23):
     - ExpoModulesCore
   - ExpoImage (1.13.0):
@@ -1353,6 +1355,8 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - RNDateTimePicker (8.4.1):
+    - React-Core
   - RNGestureHandler (2.16.2):
     - DoubleConversion
     - glog
@@ -1443,6 +1447,7 @@ DEPENDENCIES:
   - ExpoDragDropContentView (from `../node_modules/expo-drag-drop-content-view/ios`)
   - ExpoFileSystem (from `../node_modules/expo-file-system/ios`)
   - ExpoFont (from `../node_modules/expo-font/ios`)
+  - ExpoHaptics (from `../node_modules/expo-haptics/ios`)
   - ExpoHead (from `../node_modules/expo-router/ios`)
   - ExpoImage (from `../node_modules/expo-image/ios`)
   - ExpoKeepAwake (from `../node_modules/expo-keep-awake/ios`)
@@ -1512,6 +1517,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - rive-react-native (from `../node_modules/rive-react-native`)
   - "RNCMaskedView (from `../node_modules/@react-native-masked-view/masked-view`)"
+  - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -1549,6 +1555,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-file-system/ios"
   ExpoFont:
     :path: "../node_modules/expo-font/ios"
+  ExpoHaptics:
+    :path: "../node_modules/expo-haptics/ios"
   ExpoHead:
     :path: "../node_modules/expo-router/ios"
   ExpoImage:
@@ -1684,6 +1692,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/rive-react-native"
   RNCMaskedView:
     :path: "../node_modules/@react-native-masked-view/masked-view"
+  RNDateTimePicker:
+    :path: "../node_modules/@react-native-community/datetimepicker"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNReanimated:
@@ -1705,6 +1715,7 @@ SPEC CHECKSUMS:
   ExpoDragDropContentView: 4145dbf3871ad94a64f33b93be580077332dfe95
   ExpoFileSystem: 2988caaf68b7cb706e36d382829d99811d9d76a5
   ExpoFont: 38dddf823e32740c2a9f37c926a33aeca736b5c4
+  ExpoHaptics: 9f47be324f691b6291c17c216189ab832d1a4d69
   ExpoHead: 37970100b038694465cc39044cf23f3d1f56fade
   ExpoImage: 8fe3bbd2cae98bc004efec6fc4387837c9d30e10
   ExpoKeepAwake: dd02e65d49f1cfd9194640028ae2857e536eb1c9
@@ -1776,6 +1787,7 @@ SPEC CHECKSUMS:
   rive-react-native: 9ec2f5f153a7a70b879b5d384cd0cf033e77230b
   RiveRuntime: 1e72d73bea430242387177b9d0aa95126406b462
   RNCMaskedView: af7c1703f39cdef08a99275bfcadf324aa403403
+  RNDateTimePicker: 60f9e986d61e42169a2716c1b51f1f93dfa82665
   RNGestureHandler: 326e35460fb6c8c64a435d5d739bea90d7ed4e49
   RNReanimated: def444e044c354f38bb0a5926a8583ba19d944c1
   RNScreens: a2d8a2555b4653d7a19706eb172f855657ac30d7

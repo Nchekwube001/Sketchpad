@@ -177,6 +177,12 @@ const globalStyle = ScaledSheet.create({
   borderRadius16: {
     borderRadius: "16@s",
   },
+  borderRadius24: {
+    borderRadius: "24@s",
+  },
+  borderRadius32: {
+    borderRadius: "32@s",
+  },
   borderRad: {
     borderRadius: "10@s",
   },
@@ -1304,10 +1310,12 @@ const globalStyle = ScaledSheet.create({
   shadowRadius: {
     // borderRadius: '12@s',
     // elevation: 3,
-    // shadowColor: pallete.textInputTextColor,
-    shadowOffset: { width: 1, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 50,
+    shadowColor: pallete.shadowBg,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 1,
+    shadowRadius: 1,
+    borderColor: pallete.shadowBg2,
+    borderWidth: "1@s",
   },
   noOpacity: {
     opacity: 0,
