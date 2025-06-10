@@ -7,6 +7,7 @@ import Animated, {
   useAnimatedStyle,
   useDerivedValue,
   useSharedValue,
+  withDelay,
   withSpring,
   withTiming,
 } from "react-native-reanimated";
@@ -92,15 +93,25 @@ const AnimatedOverlay = () => {
   const panGesture = Gesture.Pan()
     .minDistance(10)
     .onStart(() => {
-      prevTranslationY.value = Math.abs(panHeight.value);
+      prevTranslationY.value = panHeight.value;
       isPanning.value = true;
     })
 
-    .onUpdate(({ y }) => {
-      panHeight.value = height - y;
+    .onUpdate(({ translationY, velocityY }) => {
       isPanning.value = true;
+
+      panHeight.value = clamp({
+        val: prevTranslationY.value - translationY,
+        max: height,
+        min: 0,
+      });
     })
-    .onEnd(() => {
+    .onEnd(({ velocityY }) => {
+      isPanning.value = false;
+      if (velocityY > 3000) {
+        panHeight.value = withTiming(0);
+        return;
+      }
       if (panHeight.value < threshold) {
         panHeight.value = withTiming(0);
       } else if (panHeight.value > threshold && panHeight.value < _first_step) {
@@ -118,8 +129,38 @@ const AnimatedOverlay = () => {
       } else {
         panHeight.value = withTiming(_third_step);
       }
-      isPanning.value = false;
     });
+  //   const panGesture = Gesture.Pan()
+  //     .minDistance(10)
+  //     .onStart(() => {
+  //       prevTranslationY.value = Math.abs(panHeight.value);
+  //       isPanning.value = true;
+  //     })
+
+  //     .onUpdate(({ y }) => {
+  //       panHeight.value = height - y;
+  //       isPanning.value = true;
+  //     })
+  //     .onEnd(() => {
+  //       if (panHeight.value < threshold) {
+  //         panHeight.value = withTiming(0);
+  //       } else if (panHeight.value > threshold && panHeight.value < _first_step) {
+  //         panHeight.value = withTiming(_first_step);
+  //       } else if (
+  //         panHeight.value > _first_step &&
+  //         panHeight.value < _second_step
+  //       ) {
+  //         panHeight.value = withTiming(_second_step);
+  //       } else if (
+  //         panHeight.value > _second_step &&
+  //         panHeight.value < _third_step
+  //       ) {
+  //         panHeight.value = withTiming(_third_step);
+  //       } else {
+  //         panHeight.value = withTiming(_third_step);
+  //       }
+  //       isPanning.value = false;
+  //     });
   const tabStyle = useAnimatedStyle(() => ({
     opacity:
       panHeight.value >= _second_step && !isPanning.value ? withTiming(1) : 0,
@@ -134,6 +175,10 @@ const AnimatedOverlay = () => {
   const chatStyle = useAnimatedStyle(() => ({
     display:
       panHeight.value < _first_step && !isPanning.value ? "flex" : "none",
+    // flex: withDelay(
+    //   500,
+    //   panHeight.value < _first_step && !isPanning.value ? 1 : 0
+    // ),
   }));
   return (
     <Animated.View style={[globalStyle.height, globalStyle.bgBlack]}>
@@ -293,7 +338,6 @@ const AnimatedOverlay = () => {
                       key={title}
                       style={[
                         globalStyle.flexOne,
-                        globalStyle.justifyBetween,
                         title === "Chat" && chatStyle,
                       ]}
                     >
