@@ -18,7 +18,9 @@ export default function Index() {
       // href={"/blogui"}
       // href={"/masonrygrid"}
       // href={"/circularanimation"}
-      href={"/nextvideo"}
+      href={"/doubletaptolike"}
+      // href={"/swipetoremove"}
+      // href={"/circularanimation"}
       // href={"/swipetotalk"}
       // href={"/emojipicker"}
       // href={"/lavalamp"}
