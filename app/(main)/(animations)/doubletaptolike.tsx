@@ -358,17 +358,26 @@ const PathItem = ({
   };
   const animationVal = useSharedValue(0);
   useEffect(() => {
-    animationVal.value = withSpring(
+    animationVal.value = withTiming(
       1,
       {
-        stiffness: 200,
-        damping: 20,
-        mass: 1,
+        duration: 500,
       },
       () => {
         runOnJS(filter)();
       }
     );
+    // animationVal.value = withSpring(
+    //   1,
+    //   {
+    //     stiffness: 200,
+    //     damping: 30,
+    //     mass: 1,
+    //   },
+    //   () => {
+    //     runOnJS(filter)();
+    //   }
+    // );
   }, []);
   const inputRange = [0, 0.4, 1];
   const scaleVal = useDerivedValue(
