@@ -27,7 +27,7 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import Box from "@/components/layout/Box";
-import globalStyle from "@/globalStyle/globalStyle";
+import globalStyle, { width } from "@/globalStyle/globalStyle";
 import {
   Canvas,
   interpolateColors,
@@ -367,17 +367,6 @@ const PathItem = ({
         runOnJS(filter)();
       }
     );
-    // animationVal.value = withSpring(
-    //   1,
-    //   {
-    //     stiffness: 200,
-    //     damping: 30,
-    //     mass: 1,
-    //   },
-    //   () => {
-    //     runOnJS(filter)();
-    //   }
-    // );
   }, []);
   const inputRange = [0, 0.4, 1];
   const scaleVal = useDerivedValue(
@@ -388,7 +377,7 @@ const PathItem = ({
     () =>
       interpolate(animationVal.value, inputRange, [
         x,
-        x,
+        x + (x > width / 2 ? -80 : 80),
         measurement.value?.pageX || 0,
       ]),
     []
@@ -397,7 +386,7 @@ const PathItem = ({
     () =>
       interpolate(animationVal.value, inputRange, [
         y,
-        y,
+        y - 80,
         measurement.value?.pageY || 0,
       ]),
     []
