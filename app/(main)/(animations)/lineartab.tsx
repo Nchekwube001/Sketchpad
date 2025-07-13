@@ -12,10 +12,6 @@ const TabData = [
 const Main = () => {
   const theme = useTheme();
   const [activeTab, setActiveTab] = useState("");
-  console.log({
-    activeTab,
-  });
-
   return (
     <ScrollView
       style={styles.container}

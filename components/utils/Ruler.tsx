@@ -7,6 +7,7 @@ import {
   TextInput,
   TextStyle,
   View,
+  ViewStyle,
 } from "react-native";
 import Animated, {
   clamp,
@@ -18,13 +19,22 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from "react-native-reanimated";
+import Box from "../layout/Box";
+import Svg, { Circle } from "react-native-svg";
+import globalStyle from "@/globalStyle/globalStyle";
+import pallete from "@/constants/colors/pallete";
 
+const AnimatedCircle = Animated.createAnimatedComponent(Circle);
+const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 const _spacing = 8;
 const _rulerHeight = 24;
 const _rulerWidth = 2;
 const _itemSize = _spacing;
 const { width } = Dimensions.get("window");
+const R = 38;
+const STROKE_WIDTH = 6;
 
+let circle_length = 2 * Math.PI * R;
 type RulerLineProps = {
   index: number;
   scrollX: SharedValue<number>;
@@ -37,27 +47,28 @@ function RulerLine({ index, scrollX }: RulerLineProps) {
       //   [index - 1, index, index + 1],
       //   [_rulerHeight - 1, _rulerHeight, _rulerHeight - 1]
       // ),
-      transform: [
-        {
-          scaleY: interpolate(
-            scrollX.value,
-            [index - 1, index, index + 1],
-            [0.98, 1, 0.98]
-          ),
-        },
-      ],
+      // transform: [
+      //   {
+      //     scaleY: interpolate(
+      //       scrollX.value,
+      //       [index - 1, index, index + 1],
+      //       [0.98, 1, 0.98]
+      //     ),
+      //   },
+      // ],
     };
   });
   return (
     <Animated.View
       style={[
         {
-          height: _rulerHeight,
+          height: index % 5 === 0 ? _rulerHeight * 1.8 : _rulerHeight,
           width: _itemSize,
           justifyContent: "center",
           alignItems: "center",
+          alignSelf: "center",
         },
-        stylez,
+        // stylez,
       ]}
     >
       <View
@@ -93,7 +104,7 @@ function AnimatedText({ value, style = undefined }: AnimatedTextProps) {
       animatedProps={animatedPropz}
       style={[
         {
-          fontSize: 28,
+          fontSize: 24,
           fontWeight: "700",
           textAlign: "center",
           letterSpacing: -2,
@@ -128,28 +139,101 @@ export function Ruler({
       }
     },
   });
+  const animatedProps = useAnimatedProps(() => ({
+    strokeDashoffset: circle_length - circle_length * (scrollX.value / ticks),
+  }));
   return (
-    <View style={{ justifyContent: "center", gap: _spacing }}>
+    <View
+      style={{
+        justifyContent: "center",
+        gap: _spacing,
+      }}
+    >
       <View
         style={{
           justifyContent: "center",
           alignItems: "center",
           marginBottom: _spacing,
+          flexDirection: "row",
         }}
       >
-        <AnimatedText value={scrollX} />
-        <Text
-          style={{
-            fontWeight: "500",
-            fontSize: 16,
-            lineHeight: 16,
-            fontVariant: ["tabular-nums"],
-            opacity: 0.6,
-            letterSpacing: -1,
-          }}
+        <Box
+          style={[
+            globalStyle.justifyCenter,
+            globalStyle.alignItemsCenter,
+            {
+              width: (R + STROKE_WIDTH) * 2,
+              height: (R + STROKE_WIDTH) * 2,
+            },
+          ]}
         >
-          min
-        </Text>
+          <Box
+            style={[
+              globalStyle.absolute,
+              globalStyle.justifyCenter,
+              globalStyle.alignItemsCenter,
+              globalStyle.flexrow,
+            ]}
+          >
+            <AnimatedText value={scrollX} />
+            <Text
+              style={{
+                fontWeight: "500",
+                fontSize: 16,
+                lineHeight: 16,
+                fontVariant: ["tabular-nums"],
+                opacity: 0.6,
+                letterSpacing: -1,
+                paddingLeft: 4,
+              }}
+            >
+              s.
+            </Text>
+          </Box>
+          <Animated.View
+            style={{
+              aspectRatio: 1,
+              transform: [
+                {
+                  rotate: "270deg",
+                },
+              ],
+            }}
+          >
+            <AnimatedSvg
+              height="100%"
+              width="100%"
+              viewBox="0 0 100 100"
+              style={[
+                globalStyle.justifyCenter,
+                globalStyle.alignItemsCenter,
+                globalStyle.borderRadius,
+                globalStyle.w10,
+                globalStyle.h10,
+              ]}
+            >
+              <Circle
+                cx={"50"}
+                cy={"50"}
+                r={R}
+                strokeWidth={STROKE_WIDTH}
+                fill={"transparent"}
+                stroke={pallete.primaryGrey200}
+              />
+              <AnimatedCircle
+                cx={"50"}
+                cy={"50"}
+                r={R}
+                fill={"transparent"}
+                strokeWidth={STROKE_WIDTH}
+                strokeLinecap={"round"}
+                stroke={pallete.accentOrange500}
+                strokeDasharray={circle_length}
+                animatedProps={animatedProps}
+              />
+            </AnimatedSvg>
+          </Animated.View>
+        </Box>
       </View>
       <View>
         <Animated.FlatList
@@ -161,12 +245,10 @@ export function Ruler({
           snapToInterval={_itemSize}
           contentContainerStyle={{
             paddingHorizontal: width / 2 - _itemSize / 2,
-            // alignItems: "flex-end",
           }}
           renderItem={({ index }) => {
             return <RulerLine index={index} scrollX={scrollX} />;
           }}
-          // Scrolling
           onScroll={onScroll}
           scrollEventThrottle={1000 / 60} // ~16ms
         />
@@ -174,16 +256,11 @@ export function Ruler({
           style={{
             alignSelf: "center",
             position: "absolute",
-            height: _rulerHeight,
-            width: _rulerWidth,
-            // height: _rulerHeight + _rulerWidth * 4,
-            // width: _itemSize,
-            // borderWidth: _rulerWidth,
-            // top: -_rulerWidth * 2,
-            // opacity: 0.5,
-            backgroundColor: "#000",
+            top: -20,
           }}
-        />
+        >
+          <DownArrow size={14} />
+        </View>
         <LinearGradient
           style={[StyleSheet.absoluteFillObject]}
           colors={[fadeColor, `${fadeColor}00`, `${fadeColor}00`, fadeColor]}
@@ -194,5 +271,35 @@ export function Ruler({
         />
       </View>
     </View>
+  );
+}
+
+type DownArrowProps = {
+  size?: number;
+  color?: string;
+  style?: ViewStyle;
+};
+
+export function DownArrow({
+  size = 20,
+  color = pallete.accentOrange500,
+  style,
+}: DownArrowProps) {
+  return (
+    <View
+      style={[
+        {
+          width: 0,
+          height: 0,
+          borderLeftWidth: size * 0.5,
+          borderRightWidth: size * 0.5,
+          borderTopWidth: size,
+          borderLeftColor: "transparent",
+          borderRightColor: "transparent",
+          borderTopColor: color,
+        },
+        style,
+      ]}
+    />
   );
 }

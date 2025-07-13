@@ -18,7 +18,13 @@ export default function Index() {
       // href={"/blogui"}
       // href={"/masonrygrid"}
       // href={"/circularanimation"}
-      href={"/doubletaptolike"}
+      // href={"/doubletaptolike"}
+      // href={"/trigonometry"}
+      // href={"/curvedslider"}
+      // href={"/lineartab"}
+      href={"/home"}
+      // href={"/bottomtabitems"}
+      // href={"/timepicker"}
       // href={"/swipetoremove"}
       // href={"/circularanimation"}
       // href={"/swipetotalk"}

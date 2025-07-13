@@ -6,16 +6,23 @@ export default function AnimatedRuler() {
   const [value, setValue] = useState<number>(0);
   return (
     <View style={styles.container}>
-      <View style={{ marginBottom: 24, paddingHorizontal: 20 }}>
+      <StatusBar hidden />
+      <View
+        style={{
+          paddingBottom: 40,
+        }}
+      >
+        {/* <View style={{ marginBottom: 24, paddingHorizontal: 20 }}>
         <Text>New value for the ruler (State)</Text>
         <Text style={{ fontSize: 32 }}>{value ?? "No value yet"}</Text>
+      </View> */}
+        <Ruler
+          fadeColor="#eeeeee"
+          onChange={(value) => {
+            setValue(value);
+          }}
+        />
       </View>
-      <Ruler
-        fadeColor="#eeeeee"
-        onChange={(value) => {
-          setValue(value);
-        }}
-      />
     </View>
   );
 }
@@ -23,7 +30,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: "#eeeeee",
+    alignItems: "flex-end",
     gap: 24,
+    flexDirection: "row",
   },
 });

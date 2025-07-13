@@ -6,6 +6,7 @@ import {
   Dimensions,
   StyleSheet,
   LayoutChangeEvent,
+  Pressable,
 } from "react-native";
 import postsData, { Item } from "../../../components/posts/postdata";
 import Animated, {
@@ -47,6 +48,7 @@ import {
   useState,
 } from "react";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
+import { StatusBar } from "expo-status-bar";
 const heartPath =
   "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 " +
   "2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09 " +
@@ -60,6 +62,13 @@ type PerplexityListProps = {
 type AnimatedCardProps = {
   item: Item;
   index: number;
+  hearts: {
+    x: number;
+    y: number;
+    key: string;
+  }[];
+  likedValRef: SharedValue<number>;
+
   viewableIndex: number | null;
   scrollY: SharedValue<number>;
   showHeart: SharedValue<boolean>;
@@ -95,6 +104,8 @@ export function AnimatedCard({
   tapPoints,
   showHeart,
   setHearts,
+  hearts,
+  likedValRef,
 }: AnimatedCardProps) {
   const liked = useSharedValue(0);
   const pathColor = useDerivedValue(() =>
@@ -127,8 +138,23 @@ export function AnimatedCard({
       // ...
     })();
   };
+  useAnimatedReaction(
+    () => likedValRef.value,
+    (val) => {
+      if (viewableIndex === index) {
+        console.log({
+          viewableIndex,
+          index,
+          val,
+        });
+        liked.value = withTiming(val);
+      }
+    },
+    [viewableIndex, index, likedValRef.value]
+  );
   useEffect(() => {
     if (viewableIndex === index) {
+      likedValRef.value = liked.value;
       setTimeout(() => {
         handleMeasure();
       }, 1000);
@@ -144,53 +170,47 @@ export function AnimatedCard({
     .maxDuration(250)
     .numberOfTaps(2)
     .onEnd(({ absoluteX, absoluteY }) => {
-      console.log("Double tap!");
       runOnJS(setAllHearts)({
         x: absoluteX - size / 2,
         y: absoluteY - size / 2,
       });
-
-      // tapPoints.value = {
-      //   x: absoluteX,
-      //   y: absoluteY,
-      // };
-      // console.log({
-      //   absoluteX,
-      //   absoluteY,
-      // });
     });
   return (
-    <GestureDetector gesture={doubleTap}>
-      <Animated.View
-        style={[
-          {
-            height: _itemSize,
-            padding: _spacing * 2,
-            borderRadius: _borderRadius,
-            gap: _spacing * 2,
-            backgroundColor: `${item.bg}22`,
-          },
-          stylez,
-        ]}
-      >
-        <Image
-          source={{ uri: item.image }}
-          style={[
-            StyleSheet.absoluteFillObject,
-            { borderRadius: _borderRadius, opacity: 0.6 },
-          ]}
-          blurRadius={50}
-        />
-        <Image
-          source={{ uri: item.image }}
-          style={{
-            borderRadius: _borderRadius - _spacing / 2,
-            flex: 1,
-            height: _itemSize * 0.4,
-            objectFit: "cover",
-            margin: -_spacing,
-          }}
-        />
+    <Animated.View
+      style={[
+        {
+          height: _itemSize,
+          padding: _spacing * 2,
+          borderRadius: _borderRadius,
+          gap: _spacing * 2,
+          backgroundColor: `${item.bg}22`,
+        },
+        stylez,
+      ]}
+    >
+      <GestureDetector gesture={doubleTap}>
+        <Animated.View style={[globalStyle.flexOne]}>
+          <Image
+            source={{ uri: item.image }}
+            style={[
+              StyleSheet.absoluteFillObject,
+              { borderRadius: _borderRadius, opacity: 0.6 },
+            ]}
+            blurRadius={50}
+          />
+          <Image
+            source={{ uri: item.image }}
+            style={{
+              borderRadius: _borderRadius - _spacing / 2,
+              flex: 1,
+              height: _itemSize * 0.4,
+              objectFit: "cover",
+              margin: -_spacing,
+            }}
+          />
+        </Animated.View>
+      </GestureDetector>
+      <Animated.View>
         <View style={{ gap: _spacing }}>
           <Text style={{ fontSize: 24, color: "#fff", fontWeight: "700" }}>
             {item.title}
@@ -207,26 +227,28 @@ export function AnimatedCard({
           ]}
         >
           <Animated.View ref={targetRef} style={{ width: 36, height: 36 }}>
-            <Canvas
-              style={{ flex: 1 }}
-              onTouchEnd={() => {
+            <Pressable
+              style={[globalStyle.flexOne]}
+              onPress={() => {
                 liked.value = liked.value === 0 ? 1 : 0;
               }}
             >
-              {heartPath && (
-                <Path
-                  path={heartPath}
-                  // animatedProps={animatedProps}
-                  color={pathColor}
-                  style="fill"
-                  transform={[
-                    {
-                      scale: scaleEnd,
-                    },
-                  ]}
-                />
-              )}
-            </Canvas>
+              <Canvas style={{ flex: 1 }}>
+                {heartPath && (
+                  <Path
+                    path={heartPath}
+                    // animatedProps={animatedProps}
+                    color={pathColor}
+                    style="fill"
+                    transform={[
+                      {
+                        scale: scaleEnd,
+                      },
+                    ]}
+                  />
+                )}
+              </Canvas>
+            </Pressable>
           </Animated.View>
           <View
             style={{
@@ -245,12 +267,18 @@ export function AnimatedCard({
           </View>
         </Box>
       </Animated.View>
-    </GestureDetector>
+    </Animated.View>
   );
 }
 
 export function PerplexityList({ data }: PerplexityListProps) {
   const scrollY = useSharedValue(0);
+  let likedValRef: SharedValue<number> = useSharedValue(0);
+  // const onAnimEnd = (likedVal: SharedValue<boolean>) => {
+  //   if(!likedVal.value){
+  //     likedVal.value =
+  //   }
+  // };
   const [viewableIndex, setViewableIndex] = useState<number | null>(null);
   const onScroll = useAnimatedScrollHandler((e) => {
     scrollY.value = e.contentOffset.y / _itemFullSize;
@@ -268,10 +296,6 @@ export function PerplexityList({ data }: PerplexityListProps) {
   );
 
   const showHeart = useSharedValue(false);
-  console.log({
-    hearts,
-  });
-
   return (
     <Box style={[globalStyle.flexOne]}>
       <Animated.FlatList
@@ -302,32 +326,35 @@ export function PerplexityList({ data }: PerplexityListProps) {
             index={index}
             scrollY={scrollY}
             showHeart={showHeart}
+            hearts={hearts}
             tapPoints={tapPoints}
+            likedValRef={likedValRef}
             setHearts={setHearts}
           />
         )}
       />
-      <Canvas
-        key={tapPoints.value.x}
-        style={[
-          StyleSheet.absoluteFill,
-          {
-            pointerEvents: "none",
-            //  backgroundColor: "red"
-          },
-        ]}
-      >
-        {hearts.map(({ x, y, key }) => (
-          <PathItem
-            key={key}
-            x={x}
-            y={y}
-            measurement={measurement}
-            itemKey={key}
-            setHearts={setHearts}
-          />
-        ))}
-      </Canvas>
+      {hearts.length > 0 && (
+        <Canvas
+          style={[
+            StyleSheet.absoluteFill,
+            {
+              pointerEvents: "none",
+            },
+          ]}
+        >
+          {hearts.map(({ x, y, key }) => (
+            <PathItem
+              key={key}
+              x={x}
+              y={y}
+              likedValRef={likedValRef}
+              measurement={measurement}
+              itemKey={key}
+              setHearts={setHearts}
+            />
+          ))}
+        </Canvas>
+      )}
     </Box>
   );
 }
@@ -338,10 +365,12 @@ const PathItem = ({
   measurement,
   setHearts,
   itemKey,
+  likedValRef,
 }: {
   x: number;
   y: number;
   itemKey: string;
+  likedValRef: SharedValue<number>;
   measurement: SharedValue<MeasuredDimensions | null>;
   setHearts: React.Dispatch<
     React.SetStateAction<
@@ -357,7 +386,22 @@ const PathItem = ({
     setHearts((prev) => prev.filter((it) => it.key !== itemKey));
   };
   const animationVal = useSharedValue(0);
+
+  useAnimatedReaction(
+    () => animationVal.value,
+    (val) => {
+      // console.log({
+      //   currentVal: val,
+      // });
+      // if (val >= 0.6) {
+      //   likedValRef.value = 0;
+      // }
+    },
+    [animationVal.value]
+  );
+
   useEffect(() => {
+    animationVal.value = 0;
     animationVal.value = withTiming(
       1,
       {
@@ -365,6 +409,10 @@ const PathItem = ({
       },
       () => {
         runOnJS(filter)();
+        if (likedValRef) {
+          // likedValRef.value = withTiming(1);
+          likedValRef.value = 1;
+        }
       }
     );
   }, []);
@@ -415,6 +463,7 @@ const PathItem = ({
 export default function Posts() {
   return (
     <View style={styles.container}>
+      <StatusBar hidden />
       <PerplexityList data={postsData} />
     </View>
   );

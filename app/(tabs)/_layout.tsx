@@ -1,37 +1,32 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import CustomTabBar from "@/components/utils/CustomTabBar";
+import pallete from "@/constants/colors/pallete";
+import globalStyle from "@/globalStyle/globalStyle";
+import { Tabs } from "expo-router";
+import { HomeIcon } from "lucide-react-native";
+import React from "react";
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function TabsLayout() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
+    <>
+      <Tabs
+        tabBar={(props) => <CustomTabBar {...props} />}
+        screenOptions={{
+          headerShown: false,
+          tabBarLabelStyle: [globalStyle.fontSize10, globalStyle.fontWeight500],
+          tabBarActiveTintColor: pallete.pastelBlue500,
+          tabBarInactiveTintColor: pallete.GrayText,
         }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
-        }}
-      />
-    </Tabs>
+      >
+        <Tabs.Screen
+          name="home"
+          options={{
+            tabBarIcon: ({ focused }) => {
+              return focused ? <HomeIcon /> : <HomeIcon />;
+            },
+          }}
+        />
+        <Tabs.Screen name="guardians" />
+      </Tabs>
+    </>
   );
 }
