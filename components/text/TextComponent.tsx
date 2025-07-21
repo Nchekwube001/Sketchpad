@@ -17,7 +17,8 @@ const TextComponent: FC<textProps> = ({
       numberOfLines={numberOfLines}
       onPress={onPress}
       allowFontScaling={false}
-      className="text-sm text-black"
+      // className="text-sm text-black"
+      className="text-black"
       style={[style]}
     >
       {children}

@@ -22,8 +22,11 @@ export default function Index() {
       // href={"/trigonometry"}
       // href={"/curvedslider"}
       // href={"/lineartab"}
-      href={"/home"}
+      // href={"/home"}
       // href={"/bottomtabitems"}
+      // href={"/score"}
+      href={"/bottomtabitems"}
+      // href={"/searchanimation"}
       // href={"/timepicker"}
       // href={"/swipetoremove"}
       // href={"/circularanimation"}
