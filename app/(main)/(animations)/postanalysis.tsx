@@ -1,19 +1,23 @@
 import { Button, View } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import LayoutWithSafeArea from "@/components/layout/LayoutWithSafeArea";
 import TextComponent from "@/components/text/TextComponent";
 import globalStyle from "@/globalStyle/globalStyle";
 import { useLocalSearchParams } from "expo-router";
-// import {} from 'expo/fetch'
+import { fetch } from "expo/fetch";
+interface aiResponse {
+  title: string;
+  content: string;
+  thought: string;
+  post_rate: number;
+}
 const PostAnalysis = () => {
   const { postContent } = useLocalSearchParams();
-  console.log({
-    postContent,
-  });
-
-  useEffect(() => {
-    fetchPostAnalysis();
-  }, []);
+  const [response, setResponse] = useState<aiResponse | null>(null);
+  const [partialJson, setPartialJson] = useState("");
+  //   useEffect(() => {
+  //     fetchPostAnalysis();
+  //   }, []);
 
   async function fetchPostAnalysis() {
     // const response = await fetch("api/post");
@@ -21,8 +25,39 @@ const PostAnalysis = () => {
       method: "POST",
       body: JSON.stringify({ content: postContent }),
     });
-  }
+    if (!response.ok) {
+      console.error("Failed to fetch ai", response);
 
+      return;
+    }
+
+    const reader = response.body?.getReader();
+    const decoder = new TextDecoder();
+
+    while (true) {
+      const { done, value } = (await reader?.read()) as any;
+      if (done) break;
+      const text = decoder.decode(value, {
+        stream: true,
+      });
+
+      processChunk(text);
+    }
+  }
+  const processChunk = (chunk: string) => {
+    try {
+      const accumulatedData = partialJson + chunk;
+      try {
+        const parsedData = JSON.parse(accumulatedData);
+        setResponse(parsedData);
+        setPartialJson("");
+      } catch (error) {
+        setPartialJson(accumulatedData);
+      }
+    } catch (e) {
+      console.error("Error processing chunk", e);
+    }
+  };
   return (
     <LayoutWithSafeArea>
       <View style={[globalStyle.px2, { gap: 12 }]}>
@@ -36,13 +71,22 @@ const PostAnalysis = () => {
         >
           Post Analysis
         </TextComponent>
-        <RecomendBox title={"RECOMMENDED TITLE"} content={"Title"} />
-        <RecomendBox title={"RECOMMENDED CONTENT"} content={"Content"} />
+        <RecomendBox
+          title={"RECOMMENDED TITLE"}
+          content={response?.title ?? ""}
+        />
+        <RecomendBox
+          title={"RECOMMENDED CONTENT"}
+          content={response?.content ?? ""}
+        />
         <RecomendBox
           title={"WHAT I THINK ABOUT THIS POST"}
-          content={"Thoughts"}
+          content={response?.thought ?? ""}
         />
-        <RecomendBox title={"OVERALL POST QUALITY"} content={"Post Rate"} />
+        <RecomendBox
+          title={"OVERALL POST QUALITY"}
+          content={`${response?.post_rate ?? ""}`}
+        />
 
         <View
           style={[
@@ -52,7 +96,8 @@ const PostAnalysis = () => {
             { gap: 12 },
           ]}
         >
-          <Button title="Acept" />
+          <Button title="Reject" color={"rgb(255,0,0)"} />
+          <Button title="Accept" />
         </View>
       </View>
     </LayoutWithSafeArea>
