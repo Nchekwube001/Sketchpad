@@ -15,9 +15,9 @@ const PostAnalysis = () => {
   const { postContent } = useLocalSearchParams();
   const [response, setResponse] = useState<aiResponse | null>(null);
   const [partialJson, setPartialJson] = useState("");
-  //   useEffect(() => {
-  //     fetchPostAnalysis();
-  //   }, []);
+  useEffect(() => {
+    fetchPostAnalysis();
+  }, []);
 
   async function fetchPostAnalysis() {
     // const response = await fetch("api/post");
@@ -25,39 +25,69 @@ const PostAnalysis = () => {
       method: "POST",
       body: JSON.stringify({ content: postContent }),
     });
-    if (!response.ok) {
-      console.error("Failed to fetch ai", response);
 
+    if (!response.ok) {
+      console.log("Failed to fetch ai", response);
       return;
     }
 
+    // console.log({
+    //   body: response.body?.getReader(),
+    // });
     const reader = response.body?.getReader();
+
+    if (!reader) {
+      console.error("❌ No readable stream from response");
+      console.log("Full response object:", response);
+      return;
+    }
     const decoder = new TextDecoder();
+    if (!decoder) {
+      console.error("❌ Text endoder initializing falied");
+      console.log("❌ Text endoder initializing falied");
+      return;
+    }
+    // console.log({
+    //   decoder,
+    // });
 
     while (true) {
+      console.log("-------- inside while loop-----");
+
       const { done, value } = (await reader?.read()) as any;
+      console.log({
+        "---------value--------": value,
+      });
+
       if (done) break;
       const text = decoder.decode(value, {
         stream: true,
       });
 
       processChunk(text);
+      // processChunk(text.replace(/\\"/g, '"').replace(/^"|"$/g, ""));
     }
   }
   const processChunk = (chunk: string) => {
-    try {
-      const accumulatedData = partialJson + chunk;
-      try {
-        const parsedData = JSON.parse(accumulatedData);
-        setResponse(parsedData);
-        setPartialJson("");
-      } catch (error) {
-        setPartialJson(accumulatedData);
-      }
-    } catch (e) {
-      console.error("Error processing chunk", e);
-    }
+    console.log({
+      "chunk-----------------": chunk,
+    });
+
+    // try {
+    //   const accumulatedData = partialJson + chunk;
+    //   try {
+    //     const parsedData = JSON.parse(accumulatedData);
+    //     setResponse(parsedData);
+    //     setPartialJson("");
+    //   } catch (error) {
+    //     console.log("❌ Parse error:", error);
+    //     setPartialJson(accumulatedData);
+    //   }
+    // } catch (e) {
+    //   console.error("Error processing chunk", e);
+    // }
   };
+
   return (
     <LayoutWithSafeArea>
       <View style={[globalStyle.px2, { gap: 12 }]}>
@@ -73,6 +103,7 @@ const PostAnalysis = () => {
         </TextComponent>
         <RecomendBox
           title={"RECOMMENDED TITLE"}
+          // content={response ?? ""}
           content={response?.title ?? ""}
         />
         <RecomendBox

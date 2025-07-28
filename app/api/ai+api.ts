@@ -1,15 +1,16 @@
-import openAi from "openai";
+import OpenAI from "openai";
 import { z } from "zod";
-import { zodResponseFormat } from "openai/helpers/zod";
+import { zodResponseFormat, zodTextFormat } from "openai/helpers/zod";
+import { JSONSchema } from "zod/v4/core";
 
-const openai = new openAi({
+const openai = new OpenAI({
   apiKey: process.env.OPEN_AI_KEY,
 });
 const responseObject = z.object({
   title: z.string(),
   content: z.string(),
   thought: z.string(),
-  post_rate: z.number(),
+  post_rate: z.coerce.number(),
 });
 export async function POST(request: Request) {
   console.log("POST Requst received in ai");
@@ -20,34 +21,48 @@ export async function POST(request: Request) {
     });
   }
   try {
-    // setup streaming response
     const encoder = new TextEncoder();
     const stream = new TransformStream();
     const writer = stream.writable.getWriter();
 
-    //chat stream
     const completion = openai.chat.completions
       .stream({
-        model: "gpt-4o-2024-05-13",
+        model: "gpt-4o-mini",
+        stream: true,
+        response_format: {
+          type: "json_schema",
+          json_schema: {
+            schema: z.toJSONSchema(responseObject),
+            name: "post",
+          },
+        },
         messages: [
           {
             role: "system",
             content:
               "You are an assistant that helps improve posts for social media. You wil be given a post and you need to improve it",
+            // "You are an assistant that helps improve posts for social media. You wil be given a post and you need to improve it, making it a 6000 page post, do that elegantly and stream the response",
           },
           {
             role: "user",
             content: `Here is the content: ${content}`,
           },
         ],
-        response_format: zodResponseFormat(responseObject, "post"),
       })
-      .on(
-        "content.delta",
-        async ({ parsed }) =>
-          await writer.write(encoder.encode(JSON.stringify(parsed)))
-      )
-      .on("content.done", async () => await writer.close());
+      .on("content.delta", async ({ delta, parsed }) => {
+        // console.log("📦 Delta received:", { delta });
+        // console.log("📦 parsed received:", { parsed });
+        // await writer.write(encoder.encode(JSON.stringify(delta)));
+        return await writer.write(encoder.encode(delta));
+      })
+      .on("content.done", async () => {
+        console.log("✅ Stream done");
+        return await writer.close();
+      })
+      .on("error", async (err) => {
+        console.error("❌ Stream error:", err);
+        await writer.close();
+      });
 
     return new Response(stream.readable, {
       headers: {
@@ -57,6 +72,10 @@ export async function POST(request: Request) {
       },
     });
   } catch (e) {
+    console.log({
+      chatError: e,
+    });
+
     return new Response("Error", {
       status: 500,
     });
