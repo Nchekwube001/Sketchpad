@@ -34,7 +34,6 @@
     "expo-build-properties": "~0.14.8",
     "expo-constants": "~17.1.7",
     "expo-custom-assets": "^1.4.1",
-    "expo-drag-drop-content-view": "^0.8.5",
     "expo-font": "~13.3.2",
     "expo-haptics": "~14.1.4",
     "expo-image": "~2.4.0",

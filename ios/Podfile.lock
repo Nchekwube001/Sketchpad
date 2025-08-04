@@ -1,5 +1,8 @@
 PODS:
   - boost (1.84.0)
+  - DGCharts (5.1.0):
+    - DGCharts/Core (= 5.1.0)
+  - DGCharts/Core (5.1.0)
   - DoubleConversion (1.1.6)
   - EXConstants (17.1.7):
     - ExpoModulesCore
@@ -83,6 +86,9 @@ PODS:
     - ReactCommon/turbomodule/core
     - Yoga
   - ExpoModuleTest (1.0.0):
+    - ExpoModulesCore
+  - ExpoRadialChart (1.0.0):
+    - DGCharts (~> 5.1.0)
     - ExpoModulesCore
   - ExpoSplashScreen (0.30.10):
     - ExpoModulesCore
@@ -2274,6 +2280,7 @@ DEPENDENCIES:
   - ExpoLinking (from `../node_modules/expo-linking/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
   - ExpoModuleTest (from `../modules/expo-module-test/ios`)
+  - ExpoRadialChart (from `../modules/expo-radial-chart/ios`)
   - ExpoSplashScreen (from `../node_modules/expo-splash-screen/ios`)
   - ExpoSystemUI (from `../node_modules/expo-system-ui/ios`)
   - ExpoWebBrowser (from `../node_modules/expo-web-browser/ios`)
@@ -2364,6 +2371,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - DGCharts
     - JitsiWebRTC
     - libavif
     - libdav1d
@@ -2410,6 +2418,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-modules-core"
   ExpoModuleTest:
     :path: "../modules/expo-module-test/ios"
+  ExpoRadialChart:
+    :path: "../modules/expo-radial-chart/ios"
   ExpoSplashScreen:
     :path: "../node_modules/expo-splash-screen/ios"
   ExpoSystemUI:
@@ -2584,6 +2594,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost: 7e761d76ca2ce687f7cc98e698152abd03a18f90
+  DGCharts: 1c6daf585b6cfc78807af44ea690d357c410627f
   DoubleConversion: cb417026b2400c8f53ae97020b2be961b59470cb
   EXConstants: 98bcf0f22b820f9b28f9fee55ff2daededadd2f8
   Expo: a40d525c930dd1c8a158e082756ee071955baccb
@@ -2600,6 +2611,7 @@ SPEC CHECKSUMS:
   ExpoLinking: d5c183998ca6ada66ff45e407e0f965b398a8902
   ExpoModulesCore: 00a1b5c73248465bd0b93f59f8538c4573dac579
   ExpoModuleTest: 81d92ba1514cf580e314162903a5b78e1db75466
+  ExpoRadialChart: 08c65f27b834d37cc85e3a690b57b9c492296203
   ExpoSplashScreen: 0ad5acac1b5d2953c6e00d4319f16d616f70d4dd
   ExpoSystemUI: c2724f9d5af6b1bb74e013efadf9c6a8fae547a2
   ExpoWebBrowser: dc39a88485f007e61a3dff05d6a75f22ab4a2e92

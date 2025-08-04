@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E1345AE48B1432C94C007C0 /* libPods-sketchpad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5010E5729A7EEE285812F18 /* libPods-sketchpad.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		3DD0F00C18984CB892765C0C /* libPods-sketchpad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3AB50133B65D6C3F51663EB /* libPods-sketchpad.a */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		443DF1AAE26116FB5D6002DE /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8BE197194B1EF776277467 /* ExpoModulesProvider.swift */; };
-		AA1CE1F642CF20C6BFCD343A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 7DB8C11A2886E2C286D7EA5D /* PrivacyInfo.xcprivacy */; };
+		A27B9183D715BD3B037CBD70 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53FA5EE9C0A50E5F6EE30EE /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
+		EB2D998483EB83AF5C505716 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 22E9E20384F235F31D3A82B8 /* PrivacyInfo.xcprivacy */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		010061DE9D668C63DD4FD08C /* Pods-sketchpad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sketchpad.release.xcconfig"; path = "Target Support Files/Pods-sketchpad/Pods-sketchpad.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* sketchpad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sketchpad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = sketchpad/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = sketchpad/Info.plist; sourceTree = "<group>"; };
-		7DB8C11A2886E2C286D7EA5D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = sketchpad/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		A0556EC462DC4315280BD274 /* Pods-sketchpad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sketchpad.debug.xcconfig"; path = "Target Support Files/Pods-sketchpad/Pods-sketchpad.debug.xcconfig"; sourceTree = "<group>"; };
+		22E9E20384F235F31D3A82B8 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = sketchpad/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		783C4974B02F32BC2F00E703 /* Pods-sketchpad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sketchpad.debug.xcconfig"; path = "Target Support Files/Pods-sketchpad/Pods-sketchpad.debug.xcconfig"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = sketchpad/SplashScreen.storyboard; sourceTree = "<group>"; };
-		B5010E5729A7EEE285812F18 /* libPods-sketchpad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sketchpad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B572061A7D880B46AE92EE1B /* Pods-sketchpad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sketchpad.release.xcconfig"; path = "Target Support Files/Pods-sketchpad/Pods-sketchpad.release.xcconfig"; sourceTree = "<group>"; };
+		B3AB50133B65D6C3F51663EB /* libPods-sketchpad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sketchpad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		BD8BE197194B1EF776277467 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-sketchpad/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		E53FA5EE9C0A50E5F6EE30EE /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-sketchpad/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = sketchpad/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* sketchpad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sketchpad-Bridging-Header.h"; path = "sketchpad/sketchpad-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -37,21 +37,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E1345AE48B1432C94C007C0 /* libPods-sketchpad.a in Frameworks */,
+				3DD0F00C18984CB892765C0C /* libPods-sketchpad.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0595D0186432B130A53D152D /* sketchpad */ = {
-			isa = PBXGroup;
-			children = (
-				BD8BE197194B1EF776277467 /* ExpoModulesProvider.swift */,
-			);
-			name = sketchpad;
-			sourceTree = "<group>";
-		};
 		13B07FAE1A68108700A75B9A /* sketchpad */ = {
 			isa = PBXGroup;
 			children = (
@@ -61,7 +53,15 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				7DB8C11A2886E2C286D7EA5D /* PrivacyInfo.xcprivacy */,
+				22E9E20384F235F31D3A82B8 /* PrivacyInfo.xcprivacy */,
+			);
+			name = sketchpad;
+			sourceTree = "<group>";
+		};
+		1B203D99C5F8B9ABF8410BC1 /* sketchpad */ = {
+			isa = PBXGroup;
+			children = (
+				E53FA5EE9C0A50E5F6EE30EE /* ExpoModulesProvider.swift */,
 			);
 			name = sketchpad;
 			sourceTree = "<group>";
@@ -70,7 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				B5010E5729A7EEE285812F18 /* libPods-sketchpad.a */,
+				B3AB50133B65D6C3F51663EB /* libPods-sketchpad.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -89,8 +89,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				D79E423988A12322F52B8A97 /* Pods */,
-				E3C0798EC19F9F988F1D6338 /* ExpoModulesProviders */,
+				96B781F70CD94FCD78461670 /* Pods */,
+				9B5AB0747FDD2A26B3827CE0 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -105,6 +105,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		96B781F70CD94FCD78461670 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				783C4974B02F32BC2F00E703 /* Pods-sketchpad.debug.xcconfig */,
+				010061DE9D668C63DD4FD08C /* Pods-sketchpad.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9B5AB0747FDD2A26B3827CE0 /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				1B203D99C5F8B9ABF8410BC1 /* sketchpad */,
+			);
+			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,23 +130,6 @@
 			);
 			name = Supporting;
 			path = sketchpad/Supporting;
-			sourceTree = "<group>";
-		};
-		D79E423988A12322F52B8A97 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A0556EC462DC4315280BD274 /* Pods-sketchpad.debug.xcconfig */,
-				B572061A7D880B46AE92EE1B /* Pods-sketchpad.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		E3C0798EC19F9F988F1D6338 /* ExpoModulesProviders */ = {
-			isa = PBXGroup;
-			children = (
-				0595D0186432B130A53D152D /* sketchpad */,
-			);
-			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,13 +140,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "sketchpad" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				21CFEA48E2BF62B5DC315816 /* [Expo] Configure project */,
+				C35B6C7FC9B1381D89078E77 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				DC03E2ACDD86387BAF92B6B7 /* [CP] Embed Pods Frameworks */,
+				D53BEC3FF310985E8F361650 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -195,7 +196,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				AA1CE1F642CF20C6BFCD343A /* PrivacyInfo.xcprivacy in Resources */,
+				EB2D998483EB83AF5C505716 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,25 +240,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		21CFEA48E2BF62B5DC315816 /* [Expo] Configure project */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[Expo] Configure project";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-sketchpad/expo-configure-project.sh\"\n";
-		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -265,6 +247,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-sketchpad/Pods-sketchpad-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/DGCharts/DGCharts.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
@@ -280,6 +263,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DGCharts.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoConstants_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoFileSystem_privacy.bundle",
@@ -298,7 +282,26 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sketchpad/Pods-sketchpad-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DC03E2ACDD86387BAF92B6B7 /* [CP] Embed Pods Frameworks */ = {
+		C35B6C7FC9B1381D89078E77 /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-sketchpad/expo-configure-project.sh\"\n";
+		};
+		D53BEC3FF310985E8F361650 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -328,7 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				443DF1AAE26116FB5D6002DE /* ExpoModulesProvider.swift in Sources */,
+				A27B9183D715BD3B037CBD70 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,13 +340,12 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0556EC462DC4315280BD274 /* Pods-sketchpad.debug.xcconfig */;
+			baseConfigurationReference = 783C4974B02F32BC2F00E703 /* Pods-sketchpad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = sketchpad/sketchpad.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HN863TN2YX;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -374,13 +376,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B572061A7D880B46AE92EE1B /* Pods-sketchpad.release.xcconfig */;
+			baseConfigurationReference = 010061DE9D668C63DD4FD08C /* Pods-sketchpad.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = sketchpad/sketchpad.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HN863TN2YX;
 				INFOPLIST_FILE = sketchpad/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (

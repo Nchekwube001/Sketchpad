@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple", "android", "web"],
+  "apple": {
+    "modules": ["ExpoRadialChartModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.radialchart.ExpoRadialChartModule"]
+  }
+}
