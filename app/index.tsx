@@ -26,7 +26,10 @@ export default function Index() {
       // href={"/bottomtabitems"}
       // href={"/score"}
       // href={"/playground/webrtc"}
-      href={"/animatedname"}
+      // href={"/animatedname"}
+      // href={"/gesturenav"}
+      href={"/playground/expomodule"}
+      // href={"/threadanimation"}
       // href={"/bottomtabitems"}
       // href={"/buttontest"}
       // href={"/ripple"}
