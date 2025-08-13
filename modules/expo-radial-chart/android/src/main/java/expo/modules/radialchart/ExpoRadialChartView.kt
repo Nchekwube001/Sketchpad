@@ -42,4 +42,8 @@ class ExpoRadialChartView(context: Context, appContext: AppContext) : ExpoView(c
     chartView.invalidate();
 
   }
+  fun setChartCenterText(text: String) {
+   chartView.centerText = text
+
+  }
 }

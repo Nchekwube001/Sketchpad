@@ -3997,13 +3997,6 @@ expo-custom-assets@^1.4.1:
   dependencies:
     "@changesets/cli" "^2.27.7"
 
-expo-drag-drop-content-view@^0.8.5:
-  version "0.8.5"
-  resolved "https://registry.yarnpkg.com/expo-drag-drop-content-view/-/expo-drag-drop-content-view-0.8.5.tgz#83cbaaf910c970d81fba27d0ddacfd8452a113ec"
-  integrity sha512-XIpfH7OBA5Z82lkzZTdH2mHun+RNkcdkYE4VvJqZcQyJs4ZBAOyOOBkP4G8J8I+Cr2lV3vIoSnXiZ4/U6uGSmg==
-  dependencies:
-    expo-modules-core "^2.0.3"
-
 expo-file-system@~18.1.11:
   version "18.1.11"
   resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-18.1.11.tgz#a563c715c4bb5c18729d6d104e8c6cdfbd383e69"
@@ -4020,6 +4013,18 @@ expo-haptics@~14.1.4:
   version "14.1.4"
   resolved "https://registry.yarnpkg.com/expo-haptics/-/expo-haptics-14.1.4.tgz#442f48b1bdf83484d4fcadc653445aaae6049b70"
   integrity sha512-QZdE3NMX74rTuIl82I+n12XGwpDWKb8zfs5EpwsnGi/D/n7O2Jd4tO5ivH+muEG/OCJOMq5aeaVDqqaQOhTkcA==
+
+expo-image-loader@~5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/expo-image-loader/-/expo-image-loader-5.1.0.tgz#f7d65f9b9a9714eaaf5d50a406cb34cb25262153"
+  integrity sha512-sEBx3zDQIODWbB5JwzE7ZL5FJD+DK3LVLWBVJy6VzsqIA6nDEnSFnsnWyCfCTSvbGigMATs1lgkC2nz3Jpve1Q==
+
+expo-image-manipulator@^13.1.7:
+  version "13.1.7"
+  resolved "https://registry.yarnpkg.com/expo-image-manipulator/-/expo-image-manipulator-13.1.7.tgz#e891ce9b49d75962eafdf5b7d670116583379e76"
+  integrity sha512-DBy/Xdd0E/yFind14x36XmwfWuUxOHI/oH97/giKjjPaRc2dlyjQ3tuW3x699hX6gAs9Sixj5WEJ1qNf3c8sag==
+  dependencies:
+    expo-image-loader "~5.1.0"
 
 expo-image@~2.4.0:
   version "2.4.0"
@@ -4057,7 +4062,7 @@ expo-modules-autolinking@2.1.14:
     require-from-string "^2.0.2"
     resolve-from "^5.0.0"
 
-expo-modules-core@2.5.0, expo-modules-core@^2.0.3:
+expo-modules-core@2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/expo-modules-core/-/expo-modules-core-2.5.0.tgz#cc098607c9b0665e0cbd0a423c9542253caab58a"
   integrity sha512-aIbQxZE2vdCKsolQUl6Q9Farlf8tjh/ROR4hfN1qT7QBGPl1XrJGnaOKkcgYaGrlzCPg/7IBe0Np67GzKMZKKQ==
@@ -6915,6 +6920,11 @@ react-native-unistyles@^2.12.0:
   version "2.43.0"
   resolved "https://registry.yarnpkg.com/react-native-unistyles/-/react-native-unistyles-2.43.0.tgz#5fe64b59f7bb899e5bd55b1a32d40e2831916be0"
   integrity sha512-TSqbGu6NLNvDR7XufT1kUsFivBgmCP6cQuttd5sLst8xsvcjuEjunVYeloYZiLm7/68lKMiV5zGQiTTZt8M0LQ==
+
+react-native-vision-camera@^4.7.1:
+  version "4.7.1"
+  resolved "https://registry.yarnpkg.com/react-native-vision-camera/-/react-native-vision-camera-4.7.1.tgz#4a373e8d2ebad4d652eb0de1a50e620940a074dd"
+  integrity sha512-N6qqjhUSC9XRUQzqx+647+sPsrf9FcEYGjRhif1WNy2z8AwPMOSLINIcmMM6C4drxH2CdiaULGAWHpx/cnsBpw==
 
 react-native-web@^0.20.0:
   version "0.20.0"

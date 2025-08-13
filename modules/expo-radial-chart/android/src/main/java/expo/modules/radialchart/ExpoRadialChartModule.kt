@@ -43,6 +43,10 @@ class ExpoRadialChartModule : Module() {
       Prop("data") { view: ExpoRadialChartView, prop: ArrayList<Series> ->
         view.setChartData(prop)
       }
+      Prop("centerText") { view: ExpoRadialChartView, prop: String ->
+        view.setChartCenterText(prop)
+      }
+
       // Defines an event that the view can send to JavaScript.
       Events("onLoad")
     }
